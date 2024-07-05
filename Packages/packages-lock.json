@@ -1,5 +1,15 @@
 {
   "dependencies": {
+    "com.bovinelabs.core": {
+      "version": "1.3.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.entities": "1.3.0-exp.1",
+        "com.unity.logging": "1.3.0-exp.1"
+      },
+      "url": "https://package.openupm.com"
+    },
     "com.dbrizov.naughtyattributes": {
       "version": "2.1.4",
       "depth": 0,
@@ -139,6 +149,16 @@
       "source": "registry",
       "dependencies": {
         "com.unity.test-framework": "1.1.9"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.logging": {
+      "version": "1.3.0-exp.1",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.burst": "1.8.13",
+        "com.unity.collections": "2.5.0-exp.1"
       },
       "url": "https://packages.unity.com"
     },
