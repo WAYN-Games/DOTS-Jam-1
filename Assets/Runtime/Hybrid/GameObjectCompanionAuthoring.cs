@@ -17,7 +17,7 @@ public class GameObjectCompanionAuthoring : MonoBehaviour
     {
         public override void Bake(GameObjectCompanionAuthoring authoring)
         {
-            Entity bakingEntity = GetEntity(TransformUsageFlags.WorldSpace);
+            Entity bakingEntity = GetEntity(TransformUsageFlags.Dynamic);
 
             // We store the game object prefab into a managed component
             var pgo = new PresentationGo
