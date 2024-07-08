@@ -13,6 +13,7 @@ class PlayerAuthoringBaker : Baker<PlayerAuthoring>
         Entity bakingEntity = GetEntity(authoring, TransformUsageFlags.Dynamic);
 
         AddComponent<PlayerTag>(bakingEntity);
+
     }
 }
 

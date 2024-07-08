@@ -1,6 +1,7 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
+using Unity.Jobs;
 using Unity.Physics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -10,6 +11,7 @@ partial struct SceneLoaderSystem : ISystem
     private ComponentLookup<SceneSwitchComponent> _sceneSwitchComponentLookUp;
     private ComponentLookup<PlayerTag> _playerTagLookUp;
     private NativeQueue<int> _sceneLoadCommand;
+    
 
 
     [BurstCompile]
@@ -24,6 +26,12 @@ partial struct SceneLoaderSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
+
+        if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
+        {
+            SceneManager.LoadScene(scenetoLoad);
+        }
+
         SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();
 
         _playerTagLookUp.Update(ref state);
@@ -34,12 +42,7 @@ partial struct SceneLoaderSystem : ISystem
             SceneSwitchComponentLookUp = _sceneSwitchComponentLookUp,
             SceneLoadCommand = _sceneLoadCommand
         }.Schedule(simulation, state.Dependency);
-        state.Dependency.Complete();
 
-        if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
-        {
-            SceneManager.LoadScene(scenetoLoad);
-        }
 
 
 
@@ -61,7 +64,6 @@ partial struct SceneLoaderSystem : ISystem
 
             if (!ShouldProcess(player, sceneSwitch)) return;
 
-            Debug.Log("Tiggered");
 
             SceneLoadCommand.Enqueue(SceneSwitchComponentLookUp[sceneSwitch].TargetScene);
 
