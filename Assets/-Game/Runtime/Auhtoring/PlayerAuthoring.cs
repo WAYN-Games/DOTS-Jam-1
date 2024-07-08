@@ -12,9 +12,7 @@ class PlayerAuthoringBaker : Baker<PlayerAuthoring>
     {
         Entity bakingEntity = GetEntity(authoring, TransformUsageFlags.Dynamic);
 
-        AddComponent<PlayerTag>(bakingEntity);
-
-    }
+        AddComponent<PlayerTag>(bakingEntity);    }
 }
 
 public struct PlayerTag : IComponentData { }

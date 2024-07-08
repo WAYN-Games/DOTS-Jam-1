@@ -21,4 +21,5 @@ public struct Mana : IComponentData
 public struct DamageDealer : IComponentData
 {
     public float Value;
+    public float Speed;
 }

@@ -106,5 +106,67 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5672286214770274741}
   m_SourcePrefab: {fileID: 100100000, guid: 8bca25a851d1179488495dcb6dfc5d4a, type: 3}
+--- !u!1 &6443028412671973668 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+    type: 3}
+  m_PrefabInstance: {fileID: 6173122158475273333}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &5672286214770274741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443028412671973668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa98d0f43e7849b4c9650508963a04bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimInput:
+    m_Name: Aim Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 4c5f20cd-0b2f-498b-bcd2-a8a92d4502af
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: caa26ec7-f345-4a3e-bac4-886267264181
+      m_Path: <Pointer>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim Input
+      m_Flags: 0
+    m_Flags: 0
+  BelongsTo:
+    serializedVersion: 2
+    m_Bits: 64
+  CollidesWith:
+    serializedVersion: 2
+    m_Bits: 128
+  Skill1:
+    m_Name: Skill 1
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a0d8c9e1-48e3-49fe-84f3-9182efae4502
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 5ee5f698-f80b-4f20-b840-ed16da60fb27
+      m_Path: <Keyboard>/1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skill 1
+      m_Flags: 0
+    m_Flags: 0

@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
@@ -7,8 +9,16 @@ class CombatAuthoring : MonoBehaviour
     public float Mana;
     public float HealthRegen;
     public float ManaRegen;
-    public GameObject projectile;
+    public List<Skill> Skills = new List<Skill>();
 }
+
+[Serializable]
+public class Skill
+{
+    public GameObject Projectile;
+    public float Cooldown;
+}
+
 
 class CombatAuthoringBaker : Baker<CombatAuthoring>
 {
@@ -30,5 +40,25 @@ class CombatAuthoringBaker : Baker<CombatAuthoring>
             Value = authoring.Mana
         });
 
+        AddComponent<CombatInput>(bakingEntity);
+
+        
+        var skillbuffer = AddBuffer<SkillCastInput>(bakingEntity);
+
+        foreach(var skill in authoring.Skills)
+        {
+            skillbuffer.Add(
+            new SkillCastInput()
+            {
+                Cooldown = skill.Cooldown,
+                SkillCooldown = skill.Cooldown,
+                Value = GetEntity(skill.Projectile, TransformUsageFlags.Dynamic)
+            }
+            );
+        }
+
+
+
     }
 }
+

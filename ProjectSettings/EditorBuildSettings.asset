@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Main Menu.unity
+    path: Assets/-Game/Scenes/Main Menu.unity
     guid: 31102afdf0be1324687fb054cd6ed96c
   - enabled: 1
-    path: Assets/Scenes/Appartment.unity
+    path: Assets/-Game/Scenes/Appartment.unity
     guid: 7dd66189427742f48882759f6aec3010
   - enabled: 1
-    path: Assets/Scenes/InGameScene.unity
+    path: Assets/-Game/Scenes/InGameScene.unity
     guid: e94dc5262139e0841bfa79b71531ad27
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
