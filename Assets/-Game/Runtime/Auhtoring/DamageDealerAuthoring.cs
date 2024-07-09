@@ -1,5 +1,6 @@
 using Unity.Entities;
 using UnityEngine;
+using UnityEngine.Playables;
 
 class DamageDealerAuthoring : MonoBehaviour
 {
@@ -12,6 +13,7 @@ class DamageDealerBaker : Baker<DamageDealerAuthoring>
     {
         Entity bakingEntity = GetEntity(TransformUsageFlags.Dynamic);
 
-        AddComponent(bakingEntity, authoring.damageDealer);
+        AddComponent(bakingEntity, authoring.damageDealer);       
+
     }
 }

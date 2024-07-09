@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 5205341172159664403}
   - component: {fileID: 4453320822426259650}
   - component: {fileID: 7548174311004450519}
+  - component: {fileID: 6393285932276317709}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.64, y: 0.96, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -98,7 +99,7 @@ SphereCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 512
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -123,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damageDealer:
     Value: 5
-    Speed: 30
+    Speed: 5
 --- !u!54 &7548174311004450519
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -151,3 +152,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &6393285932276317709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6874639850693816546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ae76feb05e0d44e4cbdfb6068a6aa00a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Duration: 5

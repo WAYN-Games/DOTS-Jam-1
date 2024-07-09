@@ -100,10 +100,11 @@ public class CombatInputManager : MonoBehaviour
 public struct CombatInput : IComponentData
 {
     public RaycastInput Value;
+    public bool autoAttack;
     public int SkillCast;
 }
 
-public struct SkillCastInput : IBufferElementData
+public struct SkillCastData : IBufferElementData
 {
     public Entity Value;
     public float Cooldown;

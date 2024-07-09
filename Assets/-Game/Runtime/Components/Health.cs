@@ -1,5 +1,6 @@
 using System;
 using Unity.Entities;
+using Unity.Physics;
 
 public struct Health : IComponentData
 {
@@ -22,4 +23,5 @@ public struct DamageDealer : IComponentData
 {
     public float Value;
     public float Speed;
+    public CollisionFilter filter;
 }

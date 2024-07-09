@@ -1,9 +1,11 @@
 using Unity.Burst;
 using Unity.Collections;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Physics;
 using UnityEngine;
+using UnityEngine.Playables;
 using UnityEngine.SceneManagement;
 
 partial struct SceneLoaderSystem : ISystem
@@ -23,12 +25,12 @@ partial struct SceneLoaderSystem : ISystem
 
     }
 
-    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
 
         if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
         {
+            Debug.Log($"Loading scene {scenetoLoad} {SceneManager.GetSceneByBuildIndex(scenetoLoad).name}");
             SceneManager.LoadScene(scenetoLoad);
         }
 

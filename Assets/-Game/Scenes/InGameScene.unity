@@ -282,38 +282,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa98d0f43e7849b4c9650508963a04bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Input:
-    m_Name: Input
+  AimInput:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: df9a5519-3a7d-4f98-96db-a3ae63610d8e
+    m_Id: a3f1c894-b813-420b-8c15-57d05214f47d
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings:
-    - m_Name: One Modifier
-      m_Id: b12e6729-388f-470d-8a67-42d935250a64
-      m_Path: OneModifier
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Input
-      m_Flags: 4
-    - m_Name: modifier
-      m_Id: 68c95cc5-48b1-4cf9-baa9-c2080e196b8e
-      m_Path: <Pointer>/press
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Input
-      m_Flags: 8
-    - m_Name: binding
-      m_Id: 9d455779-0b10-4ab3-8736-bc3cae334264
-      m_Path: <Pointer>/position
-      m_Interactions: 
-      m_Processors: 
-      m_Groups: 
-      m_Action: Input
-      m_Flags: 8
+    m_SingletonActionBindings: []
     m_Flags: 0
   BelongsTo:
     serializedVersion: 2
@@ -321,6 +297,15 @@ MonoBehaviour:
   CollidesWith:
     serializedVersion: 2
     m_Bits: 128
+  Skill1:
+    m_Name: 
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 42483e3c-c310-4871-a8b3-1cf1b2044b50
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0

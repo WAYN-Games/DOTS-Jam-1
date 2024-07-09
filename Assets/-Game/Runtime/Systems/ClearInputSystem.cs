@@ -8,7 +8,7 @@ public partial struct SkillCleanupSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        foreach (var input in SystemAPI.Query<DynamicBuffer<SkillCastInput>>())
+        foreach (var input in SystemAPI.Query<DynamicBuffer<SkillCastData>>())
         {
             var proxy = input;
             for (int i = 0; i < input.Length; i++)

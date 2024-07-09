@@ -27,7 +27,7 @@ public partial struct TowerPlacementSystem : ISystem
         PhysicsWorldSingleton physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
         EntityCommandBuffer ecbBos = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
         
-        foreach (var (input,position,skillCastInputs) in SystemAPI.Query<RefRO<CombatInput>,RefRO<LocalToWorld>,DynamicBuffer<SkillCastInput>>())
+        foreach (var (input,position,skillCastInputs) in SystemAPI.Query<RefRO<CombatInput>,RefRO<LocalToWorld>,DynamicBuffer<SkillCastData>>())
         {
 
             var proxy = skillCastInputs;
@@ -41,11 +41,13 @@ public partial struct TowerPlacementSystem : ISystem
                 if (skillCastInput.Cooldown > 0) continue;
 
                 skillCastInput.Cooldown = skillCastInput.SkillCooldown;
+                float3 aimDirection = position.ValueRO.Forward;
 
-                if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;
+                if (!input.ValueRO.autoAttack) { 
+                    if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;
                 
-                float3 aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);               
-                    
+                     aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);
+                }
                 // instantiate the tower at the position
                 Entity e = ecbBos.Instantiate(skillCastInput.Value);
                 LocalTransform transform = LocalTransform.FromPositionRotation(

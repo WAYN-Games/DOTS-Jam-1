@@ -43,12 +43,12 @@ class CombatAuthoringBaker : Baker<CombatAuthoring>
         AddComponent<CombatInput>(bakingEntity);
 
         
-        var skillbuffer = AddBuffer<SkillCastInput>(bakingEntity);
+        var skillbuffer = AddBuffer<SkillCastData>(bakingEntity);
 
         foreach(var skill in authoring.Skills)
         {
             skillbuffer.Add(
-            new SkillCastInput()
+            new SkillCastData()
             {
                 Cooldown = skill.Cooldown,
                 SkillCooldown = skill.Cooldown,

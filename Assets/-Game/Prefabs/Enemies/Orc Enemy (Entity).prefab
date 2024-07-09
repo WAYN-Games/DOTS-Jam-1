@@ -1,0 +1,199 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4247420684684981063
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5131943672900734867}
+  - component: {fileID: 4197035854806794388}
+  - component: {fileID: 501878239182238595}
+  - component: {fileID: 2202537437700527584}
+  - component: {fileID: 601960270695851989}
+  - component: {fileID: 5393409738698941474}
+  m_Layer: 0
+  m_Name: Orc Enemy (Entity)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5131943672900734867
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.54, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6102484265167696791}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &4197035854806794388
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &501878239182238595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c854a728d43c7cf47bec103607a449f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CharacterProperties:
+    CustomPhysicsBodyTags:
+      Tag00: 0
+      Tag01: 0
+      Tag02: 0
+      Tag03: 0
+      Tag04: 0
+      Tag05: 0
+      Tag06: 0
+      Tag07: 0
+    InterpolatePosition: 1
+    InterpolateRotation: 0
+    EvaluateGrounding: 1
+    SnapToGround: 1
+    GroundSnappingDistance: 0.5
+    EnhancedGroundPrecision: 0
+    MaxGroundedSlopeAngle: 60
+    DetectMovementCollisions: 1
+    DecollideFromOverlaps: 1
+    ProjectVelocityOnInitialOverlaps: 0
+    MaxContinuousCollisionsIterations: 8
+    MaxOverlapDecollisionIterations: 2
+    DiscardMovementWhenExceedMaxIterations: 1
+    KillVelocityWhenExceedMaxIterations: 1
+    DetectObstructionsForParentBodyMovement: 0
+    SimulateDynamicBody: 1
+    Mass: 1
+  RotationSharpness: 25
+  GroundMaxSpeed: 15
+  GroundedMovementSharpness: 15
+  AirAcceleration: 50
+  AirMaxSpeed: 10
+  AirDrag: 0
+  JumpSpeed: 0
+  Gravity:
+    x: -0
+    y: -30
+    z: -0
+  PreventAirAccelerationAgainstUngroundedHits: 1
+  StepAndSlopeHandling:
+    StepHandling: 1
+    MaxStepHeight: 0.5
+    ExtraStepChecksDistance: 0.1
+    CharacterWidthForStepGroundingCheck: 1
+    PreventGroundingWhenMovingTowardsNoGrounding: 1
+    HasMaxDownwardSlopeChangeAngle: 0
+    MaxDownwardSlopeChangeAngle: 90
+    ConstrainVelocityToGroundPlane: 1
+--- !u!114 &2202537437700527584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f64ea5928b4ec2a4aa07b00e195236f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Prefab: {fileID: 721059760548090748, guid: 3238f38d50788b9418fbfbd61d1fa2e2, type: 3}
+  GizmoColor: {r: 0, g: 0, b: 0, a: 0}
+--- !u!114 &601960270695851989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35fe42fdb7dd777499b97a3c8a5621f3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+  Mana: 100
+  HealthRegen: 1
+  ManaRegen: 5
+  Skills:
+  - Projectile: {fileID: 6874639850693816546, guid: 423c7f50084d770418663be2812a99e5,
+      type: 3}
+    Cooldown: 1
+--- !u!114 &5393409738698941474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247420684684981063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9ba97f7169a2254c9819081653a9238, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6832500456418932824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6102484265167696791}
+  m_Layer: 0
+  m_Name: CameraTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6102484265167696791
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6832500456418932824}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5131943672900734867}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

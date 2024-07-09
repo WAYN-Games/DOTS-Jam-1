@@ -78,7 +78,6 @@ partial struct RegenSystem : ISystem
 
         public void Execute(TriggerEvent triggerEvent)
         {
-            Debug.Log($"Check");
             var (healthEntity, damageDealerEntity) = IdentifyEntityPair(triggerEvent);
 
             if (!ShouldProcess(healthEntity, damageDealerEntity)) return;
@@ -89,7 +88,7 @@ partial struct RegenSystem : ISystem
             HealthLookup[healthEntity] = hp;
             if (hp.Value < 0)
             {
-                Debug.Log($"{healthEntity.Index},{healthEntity.Version} is dead");
+                ecb.DestroyEntity(healthEntity);
             }
 
             ecb.DestroyEntity(damageDealerEntity);
