@@ -96,12 +96,42 @@ PrefabInstance:
     - target: {fileID: 5866666021909216657, guid: 8bca25a851d1179488495dcb6dfc5d4a,
         type: 3}
       propertyPath: m_WarningMessage
-      value: "\nBinding warning: Some generic clip(s) animate transforms that are
-        already bound by a Humanoid avatar. These transforms can only be changed
-        by Humanoid clips.\n\tTransform 'hips'\n\tTransform 'upperleg.l'\n\tTransform
-        'lowerarm.l'\n\tTransform 'lowerarm.r'\n\tTransform 'upperarm.l'\n\tTransform
-        'foot.r'\n\tTransform 'foot.l'\n\tTransform 'upperarm.r'\n\tTransform 'lowerleg.l'\n\tTransform
-        'lowerleg.r'\n\tand more ...\n\tFrom animation clip 'Idle'"
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7586549
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.25790417
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.29442698
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.5208079
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 4.855
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -45.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 6328476470596349915, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -70.995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

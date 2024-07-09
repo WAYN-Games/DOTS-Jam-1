@@ -1,6 +1,5 @@
 
 using Unity.Burst;
-using Unity.Collections;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Physics;
@@ -12,22 +11,27 @@ using UnityEngine;
 [UpdateAfter(typeof(FixedStepSimulationSystemGroup))]
 [UpdateBefore(typeof(SkillCleanupSystem))]
 [BurstCompile]
-public partial struct TowerPlacementSystem : ISystem
+public partial struct SkillExecutionSystem : ISystem
 {
+    private ComponentLookup<LocalTransform> _transformLookup;
+
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
         state.RequireForUpdate<BeginInitializationEntityCommandBufferSystem.Singleton>();
         state.RequireForUpdate<PhysicsWorldSingleton>();
+        _transformLookup = SystemAPI.GetComponentLookup<LocalTransform>(false);
     }
     
-    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         PhysicsWorldSingleton physicsWorld = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
         EntityCommandBuffer ecbBos = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
-        
-        foreach (var (input,position,skillCastInputs) in SystemAPI.Query<RefRO<CombatInput>,RefRO<LocalToWorld>,DynamicBuffer<SkillCastData>>())
+
+        _transformLookup.Update(ref state);
+
+        foreach (var (input,position,skillCastInputs,animator,entity) in SystemAPI.Query<RefRO<CombatInput>,RefRO<LocalTransform>,DynamicBuffer<SkillCastData>
+            ,SystemAPI.ManagedAPI.UnityEngineComponent<Animator>>().WithEntityAccess())
         {
 
             var proxy = skillCastInputs;
@@ -41,14 +45,23 @@ public partial struct TowerPlacementSystem : ISystem
                 if (skillCastInput.Cooldown > 0) continue;
 
                 skillCastInput.Cooldown = skillCastInput.SkillCooldown;
-                float3 aimDirection = position.ValueRO.Forward;
+                animator.Value.Play("CharacterArmature|Punch");
+
+                float3 aimDirection = position.ValueRO.Position;
 
                 if (!input.ValueRO.autoAttack) { 
-                    if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;
-                
+                    if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;                
                      aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);
+
+                    _transformLookup[entity] = LocalTransform.FromPositionRotationScale(
+                        _transformLookup[entity].Position,
+                        quaternion.LookRotationSafe(aimDirection, math.up()),
+                        _transformLookup[entity].Scale
+                        );
+
+                    _transformLookup[entity] = _transformLookup[entity].RotateY(45);
                 }
-                // instantiate the tower at the position
+
                 Entity e = ecbBos.Instantiate(skillCastInput.Value);
                 LocalTransform transform = LocalTransform.FromPositionRotation(
                             position.ValueRO.Position + aimDirection,

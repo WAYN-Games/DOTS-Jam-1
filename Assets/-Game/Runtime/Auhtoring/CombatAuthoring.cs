@@ -40,9 +40,15 @@ class CombatAuthoringBaker : Baker<CombatAuthoring>
             Value = authoring.Mana
         });
 
-        AddComponent<CombatInput>(bakingEntity);
 
-        
+        CombatInput input = default;
+        input.SkillCast= - 1;
+        if(authoring.gameObject.GetComponent<EnemyBehaviorAuhtoring>() != null)
+        {
+            input.autoAttack = true;
+        }
+        AddComponent(bakingEntity, input);
+
         var skillbuffer = AddBuffer<SkillCastData>(bakingEntity);
 
         foreach(var skill in authoring.Skills)

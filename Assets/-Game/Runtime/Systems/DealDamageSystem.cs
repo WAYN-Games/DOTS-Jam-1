@@ -4,7 +4,7 @@ using Unity.Entities;
 using Unity.Physics;
 using UnityEngine;
 using Unity.Mathematics;
-
+using Unity.VisualScripting;
 
 partial struct RegenSystem : ISystem
 {
@@ -37,6 +37,7 @@ partial struct RegenSystem : ISystem
 
     private ComponentLookup<Health> _healthLookup;
     private ComponentLookup<DamageDealer> _damageDealerLookup;
+    private NativeQueue<Entity> _animatorCommand;
 
 
     [BurstCompile]
@@ -44,12 +45,19 @@ partial struct RegenSystem : ISystem
     {
         _healthLookup = SystemAPI.GetComponentLookup<Health>(false);
         _damageDealerLookup = SystemAPI.GetComponentLookup<DamageDealer>(true);
+        _animatorCommand = new NativeQueue<Entity>(Allocator.Persistent);
 
     }
+
 
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
+        if(_animatorCommand.TryDequeue(out Entity entity))
+        {
+            SystemAPI.ManagedAPI.GetComponent<Animator>(entity).Play("CharacterArmature|HitReact");
+        }
+
         SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();
         EntityCommandBuffer ecb = SystemAPI.GetSingleton<BeginInitializationEntityCommandBufferSystem.Singleton>()
             .CreateCommandBuffer(state.WorldUnmanaged);
@@ -60,7 +68,8 @@ partial struct RegenSystem : ISystem
         {
             HealthLookup = _healthLookup,
             DamageDealerLookup = _damageDealerLookup,
-            ecb = ecb
+            ecb = ecb,
+            AnimationCommand = _animatorCommand
         }.Schedule(simulation, state.Dependency);
         
 
@@ -75,7 +84,7 @@ partial struct RegenSystem : ISystem
         [ReadOnly]
         public ComponentLookup<DamageDealer> DamageDealerLookup;
         public EntityCommandBuffer ecb;
-
+        public NativeQueue<Entity> AnimationCommand;
         public void Execute(TriggerEvent triggerEvent)
         {
             var (healthEntity, damageDealerEntity) = IdentifyEntityPair(triggerEvent);
@@ -90,7 +99,11 @@ partial struct RegenSystem : ISystem
             {
                 ecb.DestroyEntity(healthEntity);
             }
-
+            else
+            {
+                AnimationCommand.Enqueue(healthEntity);
+            }
+      
             ecb.DestroyEntity(damageDealerEntity);
         }
 
@@ -118,5 +131,10 @@ partial struct RegenSystem : ISystem
         }
     }
 
+
+    public void OnDestroy(ref SystemState state)
+    {
+        _animatorCommand.Dispose();
+    }
 
 }
