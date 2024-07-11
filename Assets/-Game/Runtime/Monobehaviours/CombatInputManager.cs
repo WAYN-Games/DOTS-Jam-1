@@ -75,7 +75,7 @@ public class CombatInputManager : MonoBehaviour
 
         int castSkill = -1;
 
-        if (Skill1.WasPerformedThisFrame())
+        if (Skill1.inProgress)
         {
             castSkill = 0;
         }

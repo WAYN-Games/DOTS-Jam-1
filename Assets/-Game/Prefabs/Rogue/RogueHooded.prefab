@@ -141,6 +141,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 5672286214770274741}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8bca25a851d1179488495dcb6dfc5d4a,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3368262381101499010}
   m_SourcePrefab: {fileID: 100100000, guid: 8bca25a851d1179488495dcb6dfc5d4a, type: 3}
 --- !u!1 &6443028412671973668 stripped
 GameObject:
@@ -193,6 +197,58 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 5ee5f698-f80b-4f20-b840-ed16da60fb27
+      m_Path: <Keyboard>/1
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Skill 1
+      m_Flags: 0
+    m_Flags: 0
+--- !u!114 &3368262381101499010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6443028412671973668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa98d0f43e7849b4c9650508963a04bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AimInput:
+    m_Name: Aim Input
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a3f1c894-b813-420b-8c15-57d05214f47d
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 71375c42-7977-485d-8776-715f91b8e796
+      m_Path: <Pointer>/position
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Aim Input
+      m_Flags: 0
+    m_Flags: 0
+  BelongsTo:
+    serializedVersion: 2
+    m_Bits: 64
+  CollidesWith:
+    serializedVersion: 2
+    m_Bits: 128
+  Skill1:
+    m_Name: Skill 1
+    m_Type: 2
+    m_ExpectedControlType: 
+    m_Id: 42483e3c-c310-4871-a8b3-1cf1b2044b50
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 92805901-dd55-4fc6-bf51-056d1cc18bb0
       m_Path: <Keyboard>/1
       m_Interactions: 
       m_Processors: 

@@ -50,12 +50,14 @@ partial struct RegenSystem : ISystem
     }
 
 
-    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         if(_animatorCommand.TryDequeue(out Entity entity))
         {
-            SystemAPI.ManagedAPI.GetComponent<Animator>(entity).Play("CharacterArmature|HitReact");
+            if (SystemAPI.ManagedAPI.HasComponent<Animator>(entity))
+            {
+                SystemAPI.ManagedAPI.GetComponent<Animator>(entity).Play("CharacterArmature|HitReact");
+            }
         }
 
         SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();

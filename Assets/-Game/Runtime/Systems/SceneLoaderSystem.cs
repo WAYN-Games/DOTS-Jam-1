@@ -1,11 +1,9 @@
 using Unity.Burst;
 using Unity.Collections;
-using Unity.Collections.LowLevel.Unsafe;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Physics;
-using UnityEngine;
-using UnityEngine.Playables;
+using Unity.Scenes;
 using UnityEngine.SceneManagement;
 
 partial struct SceneLoaderSystem : ISystem
@@ -28,12 +26,7 @@ partial struct SceneLoaderSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
 
-        if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
-        {
-            Debug.Log($"Loading scene {scenetoLoad} {SceneManager.GetSceneByBuildIndex(scenetoLoad).name}");
-            SceneManager.LoadScene(scenetoLoad);
-        }
-
+        
         SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();
 
         _playerTagLookUp.Update(ref state);
@@ -45,7 +38,22 @@ partial struct SceneLoaderSystem : ISystem
             SceneLoadCommand = _sceneLoadCommand
         }.Schedule(simulation, state.Dependency);
 
+        state.Dependency.Complete();
+        if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
+        {
+            NativeList<Unity.Entities.Hash128> sceneRefs = new NativeList<Unity.Entities.Hash128>(Allocator.Temp);
+            foreach(var sceneRef in SystemAPI.Query<RefRO<SceneReference>>()){
+                sceneRefs.Add(sceneRef.ValueRO.SceneGUID);
+            }
 
+            foreach(var sceneRef in sceneRefs)
+            {
+                SceneSystem.UnloadScene(state.WorldUnmanaged, sceneRef, SceneSystem.UnloadParameters.DestroyMetaEntities);
+            }
+
+
+            SceneManager.LoadScene(scenetoLoad,LoadSceneMode.Single);
+        }
 
 
     }

@@ -51,15 +51,17 @@ public partial struct SkillExecutionSystem : ISystem
 
                 if (!input.ValueRO.autoAttack) { 
                     if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;                
-                     aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);
-
+                    aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);
+                    var lookDirection = aimDirection;
+                    lookDirection.y = 0;
                     _transformLookup[entity] = LocalTransform.FromPositionRotationScale(
                         _transformLookup[entity].Position,
-                        quaternion.LookRotationSafe(aimDirection, math.up()),
+                        quaternion.LookRotationSafe(lookDirection, math.up()),
                         _transformLookup[entity].Scale
                         );
 
-                    _transformLookup[entity] = _transformLookup[entity].RotateY(45);
+                    _transformLookup[entity] = 
+                        _transformLookup[entity].RotateY(45);
                 }
 
                 Entity e = ecbBos.Instantiate(skillCastInput.Value);
