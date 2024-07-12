@@ -47,8 +47,8 @@ public partial struct SkillExecutionSystem : ISystem
                 skillCastInput.Cooldown = skillCastInput.SkillCooldown;
                 animator.Value.Play("CharacterArmature|Punch");
 
-                float3 aimDirection = position.ValueRO.Position;
-
+                float3 aimDirection = position.ValueRO.Forward();
+                
                 if (!input.ValueRO.autoAttack) { 
                     if (!physicsWorld.CastRay(input.ValueRO.Value, out var hit)) continue;                
                     aimDirection = math.normalizesafe(hit.Position - position.ValueRO.Position);
@@ -64,6 +64,8 @@ public partial struct SkillExecutionSystem : ISystem
                         _transformLookup[entity].RotateY(45);
                 }
 
+
+                Debug.Log($"{position.ValueRO.Position + aimDirection} / {aimDirection}");
                 Entity e = ecbBos.Instantiate(skillCastInput.Value);
                 LocalTransform transform = LocalTransform.FromPositionRotation(
                             position.ValueRO.Position + aimDirection,

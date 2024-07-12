@@ -41,17 +41,6 @@ partial struct SceneLoaderSystem : ISystem
         state.Dependency.Complete();
         if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
         {
-            NativeList<Unity.Entities.Hash128> sceneRefs = new NativeList<Unity.Entities.Hash128>(Allocator.Temp);
-            foreach(var sceneRef in SystemAPI.Query<RefRO<SceneReference>>()){
-                sceneRefs.Add(sceneRef.ValueRO.SceneGUID);
-            }
-
-            foreach(var sceneRef in sceneRefs)
-            {
-                SceneSystem.UnloadScene(state.WorldUnmanaged, sceneRef, SceneSystem.UnloadParameters.DestroyMetaEntities);
-            }
-
-
             SceneManager.LoadScene(scenetoLoad,LoadSceneMode.Single);
         }
 

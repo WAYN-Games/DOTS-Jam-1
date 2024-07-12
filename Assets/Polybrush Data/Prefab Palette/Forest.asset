@@ -16,7 +16,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 6344b3e2059ae8c41906f46d829405d6,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 18.549997
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -33,7 +33,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 0f7ac48a143568d479d1cb0687cdcdd0,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 25.749998
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -67,7 +67,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: fbfc7434f02caca4c9e1144f026076c7,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 14.050007
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -101,7 +101,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: cd8983c6c892f574f8ab2dd9dcaf7c89,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 29.350014
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -186,7 +186,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 9a4eb8883b24594488762d2b726a70bc,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 21.25
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -237,7 +237,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: e0ad63777a7051c469b5d224b3143263,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 20.350006
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -288,7 +288,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 32011d499645f2d478f6c78039588312,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 30.25
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -322,7 +322,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 8b2f1aedfdede3a4ab65163964cb3aa5,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 18.549997
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -356,7 +356,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: c2b58d2fa48cf144c8e2758ee3829852,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 100
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -407,7 +407,7 @@ MonoBehaviour:
   - gameObject: {fileID: 919132149155446097, guid: 634a3d04423f24249a7f9be1c5b45fd2,
       type: 3}
     settings:
-      m_Strength: 50
+      m_Strength: 81.10001
       m_RotationRangeMin: {x: 270, y: 0, z: 0}
       m_RotationRangeMax: {x: 270, y: 360, z: 0}
       m_ScaleRangeMin: {x: 1, y: 1, z: 1}
@@ -438,3 +438,54 @@ MonoBehaviour:
       m_YScaleBool: 0
       m_ZScaleBool: 0
     name: PineTree_5
+  - gameObject: {fileID: 3199023900668226877, guid: ef2f403170a90c546beda29a3bba3671,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 270, y: 0, z: 0}
+      m_RotationRangeMax: {x: 270, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 0.9, y: 1.1}
+      m_UniformBool: 1
+      m_XRotationBool: 1
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 0
+    name: Environment_PalmTree_1
+  - gameObject: {fileID: 2335257362123396396, guid: a1c3136a3b3f69740a9db43e0f259337,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 270, y: 0, z: 0}
+      m_RotationRangeMax: {x: 270, y: 360, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 0.9, y: 1.1}
+      m_UniformBool: 1
+      m_XRotationBool: 1
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 0
+    name: Environment_PalmTree_2
+  - gameObject: {fileID: 6253808720437438351, guid: f62beda9168c0ca4f97a69425325da54,
+      type: 3}
+    settings:
+      m_Strength: 50
+      m_RotationRangeMin: {x: 0, y: 0, z: 0}
+      m_RotationRangeMax: {x: 0, y: 0, z: 0}
+      m_ScaleRangeMin: {x: 1, y: 1, z: 1}
+      m_ScaleRangeMax: {x: 1, y: 1, z: 1}
+      m_UniformScale: {x: 1, y: 1}
+      m_UniformBool: 1
+      m_XRotationBool: 1
+      m_YRotationBool: 1
+      m_ZRotationBool: 0
+      m_XScaleBool: 0
+      m_YScaleBool: 0
+      m_ZScaleBool: 0
+    name: Spawner

@@ -1,4 +1,7 @@
-<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <engine:Button text="Play" name="Play" />
-    <engine:Button text="Settings" name="Settings" />
-</engine:UXML>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/Resources/ui.uss?fileID=7433441132597879392&amp;guid=fd5394ce5df6ea944afa966e9ee22dc9&amp;type=3#ui" />
+    <ui:VisualElement style="flex-grow: 1; justify-content: center; align-self: center; flex-shrink: 0;">
+        <ui:Button text="Play" name="Play" style="background-image: url(&apos;project://database/Assets/ThirdParty/UI%20Adventure%20Pack/PNG/buttonLong_beige.png?fileID=2800000&amp;guid=4607b3a280563124197732609b42adba&amp;type=3#buttonLong_beige&apos;); width: 200px;" />
+        <ui:Button text="Settings" name="Settings" style="background-image: url(&apos;project://database/Assets/ThirdParty/UI%20Adventure%20Pack/PNG/buttonLong_beige.png?fileID=2800000&amp;guid=4607b3a280563124197732609b42adba&amp;type=3#buttonLong_beige&apos;); width: 200px;" />
+    </ui:VisualElement>
+</ui:UXML>

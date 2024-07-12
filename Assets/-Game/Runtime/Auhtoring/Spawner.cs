@@ -64,7 +64,7 @@ public partial struct SpawnSystem : ISystem
     [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
-        
+        if (SystemAPI.QueryBuilder().WithAll<Enemy>().Build().CalculateEntityCount() > 100) return;
 
         foreach (var (spawnableEntities,timer,position) in SystemAPI.Query < DynamicBuffer<SpawnableEntities>,RefRW<SpawnerTimer>, RefRO < LocalToWorld>>())
         {

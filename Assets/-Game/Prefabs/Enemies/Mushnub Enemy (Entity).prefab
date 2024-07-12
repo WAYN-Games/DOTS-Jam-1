@@ -146,9 +146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fe42fdb7dd777499b97a3c8a5621f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
+  Health: 10
   Mana: 0
-  HealthRegen: 0
+  HealthRegen: 1
   ManaRegen: 0
   Skills:
   - Projectile: {fileID: 943809803560397755, guid: de4ef95ca4b5ae4408bcddd872b8a92f,

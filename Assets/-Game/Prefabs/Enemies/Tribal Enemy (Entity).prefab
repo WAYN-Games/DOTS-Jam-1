@@ -177,12 +177,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35fe42fdb7dd777499b97a3c8a5621f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Health: 2
+  Health: 15
   Mana: 0
-  HealthRegen: 0
+  HealthRegen: 1
   ManaRegen: 0
   Skills:
-  - Projectile: {fileID: 943809803560397755, guid: bb70467861876ed419d52a1ed683dcd0,
+  - Projectile: {fileID: 943809803560397755, guid: ef080e6f38113ae4b9072362e7e9e166,
       type: 3}
     Cooldown: 5
 --- !u!114 &233898669104031202
@@ -198,4 +198,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AggroRange: 20
-  AttackRange: 2
+  AttackRange: 10
