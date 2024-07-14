@@ -1,33 +1,33 @@
-
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
 using Unity.Jobs;
 using Unity.Physics;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-partial struct SceneLoaderSystem : ISystem
+
+
+partial struct UITriggerSystem : ISystem
 {
-    private ComponentLookup<SceneSwitchComponent> _sceneSwitchComponentLookUp;
+    private ComponentLookup<UIToogleComponent> _sceneSwitchComponentLookUp;
     private ComponentLookup<PlayerTag> _playerTagLookUp;
-    private NativeQueue<int> _sceneLoadCommand;
-    
+    private NativeQueue<Entity> _UIToLoadCommand;
+
 
 
     [BurstCompile]
     public void OnCreate(ref SystemState state)
     {
-        _sceneSwitchComponentLookUp = SystemAPI.GetComponentLookup<SceneSwitchComponent>(true);
+        _sceneSwitchComponentLookUp = SystemAPI.GetComponentLookup<UIToogleComponent>(true);
         _playerTagLookUp = SystemAPI.GetComponentLookup<PlayerTag>(true);
-        _sceneLoadCommand = new NativeQueue<int>(Allocator.Persistent);
+        _UIToLoadCommand = new NativeQueue<Entity>(Allocator.Persistent);
 
     }
 
     public void OnUpdate(ref SystemState state)
     {
 
-        
+
         SimulationSingleton simulation = SystemAPI.GetSingleton<SimulationSingleton>();
 
         _playerTagLookUp.Update(ref state);
@@ -36,22 +36,25 @@ partial struct SceneLoaderSystem : ISystem
         {
             PlayerTagLookUp = _playerTagLookUp,
             SceneSwitchComponentLookUp = _sceneSwitchComponentLookUp,
-            SceneLoadCommand = _sceneLoadCommand
+            UILoadCommand = _UIToLoadCommand
         }.Schedule(simulation, state.Dependency);
 
         state.Dependency.Complete();
-        if (_sceneLoadCommand.TryDequeue(out int scenetoLoad))
+        var array = _UIToLoadCommand.ToArray(Allocator.Temp);
+
+        foreach (var (ui, entity) in SystemAPI.Query<SystemAPI.ManagedAPI.UnityEngineComponent<UIManager>>().WithEntityAccess())
         {
-            GameObject ui = GameObject.FindGameObjectWithTag("LoadScreenCanvas");
-            GameObject.DontDestroyOnLoad(ui);            
-            ui.SetActive(false);
-            ui.SetActiveRecursively(true);
-            SceneManager.LoadScene(scenetoLoad,LoadSceneMode.Single);
-            GameObject.Destroy(ui,4f);
-
-
-
+            if (array.Contains(entity))
+            {
+                ui.Value.ShowUI(true);
+            }
+            else
+            {
+                ui.Value.ShowUI(false);
+            }
         }
+
+        _UIToLoadCommand.Clear();
 
 
     }
@@ -60,24 +63,20 @@ partial struct SceneLoaderSystem : ISystem
     public struct InteracitonJob : ITriggerEventsJob
     {
         [ReadOnly]
-        public ComponentLookup<SceneSwitchComponent> SceneSwitchComponentLookUp;
+        public ComponentLookup<UIToogleComponent> SceneSwitchComponentLookUp;
         [ReadOnly]
         public ComponentLookup<PlayerTag> PlayerTagLookUp;
 
-        public NativeQueue<int> SceneLoadCommand;
+        public NativeQueue<Entity> UILoadCommand;
 
         public void Execute(TriggerEvent triggerEvent)
         {
+            var (player, uiToogleEntity) = IdentifyEntityPair(triggerEvent);
 
-             var (player, sceneSwitch) =  IdentifyEntityPair(triggerEvent);
-            Debug.Log($"{player.Index}:{player.Version}/{sceneSwitch.Index}:{sceneSwitch.Version}");
-
-            if (!ShouldProcess(player, sceneSwitch)) return;
-
-            Debug.Log($"Processing");
+            if (!ShouldProcess(player, uiToogleEntity)) return;
 
 
-            SceneLoadCommand.Enqueue(SceneSwitchComponentLookUp[sceneSwitch].TargetScene);
+            UILoadCommand.Enqueue(uiToogleEntity);
 
         }
 
@@ -108,6 +107,6 @@ partial struct SceneLoaderSystem : ISystem
     [BurstCompile]
     public void OnDestroy(ref SystemState state)
     {
-        _sceneLoadCommand.Dispose();
+        _UIToLoadCommand.Dispose();
     }
 }
